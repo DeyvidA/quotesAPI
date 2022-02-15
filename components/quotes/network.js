@@ -14,7 +14,9 @@ router.post('/', function(req, res) {
 });
 
 router.get('/', function (req, res) {
-    const filter = req.query.date || null
+    const date = new Date()
+    let currentDate = date.toISOString().split("T")[0];
+    const filter = req.query.date || currentDate;
     controller.listQuotes(filter)
         .then(authors => {
             response.success(req, res, authors, 200);
