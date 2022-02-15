@@ -13,8 +13,9 @@ router.post('/', function(req, res) {
         });
 });
 
-router.get('/', function(req, res) {
-    controller.listQuotes()
+router.get('/', function (req, res) {
+    const filter = req.query.date || null
+    controller.listQuotes(filter)
         .then(authors => {
             response.success(req, res, authors, 200);
         })

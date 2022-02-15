@@ -5,8 +5,13 @@ function addQuote(author, quote, date) {
     return myQuote.save();
 }
 
-function listQuotes() {
-    return Model.find();
+function listQuotes(filterDate) {
+    let filter = {}
+    if (filterDate !== null) {
+        filter = { date: filterDate };
+    }
+    const list = Model.find(filter);
+    return list
 }
 
 module.exports = {

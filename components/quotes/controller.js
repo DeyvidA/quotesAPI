@@ -11,13 +11,15 @@ function addQuotes(author, quote, date) {
     const quotes = {
         author,
         quote,
-        date: new Date()
+        date,
     };
     return store.add(quotes);
 }
 
-function listQuotes() {
-    return store.list();
+function listQuotes(filterDate) {
+    return new Promise(async (resolve, reject) => {
+        resolve(store.list(filterDate));
+    })
 }
 
 module.exports = {
