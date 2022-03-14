@@ -15,6 +15,7 @@ router.post('/', function(req, res) {
 
 router.get('/', function (req, res) {
     const date = new Date()
+    const dai = req.query;
     let currentDate = date.toISOString().split("T")[0];
     const filter = req.query.date || currentDate;
     controller.listQuotes(filter)
